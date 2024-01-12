@@ -1,0 +1,21 @@
+<myProfile>
+    <div th:if="${ not#lists.isEmpty(profile)}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+            <td th:text="${profile.first_name+' '+profile.last_name}"></td>
+            <td th:if="${profile.id}"><a class="btn btn-info" th:href="@{/profile/{profile_id}/edit(profile_id=${profile.id})}">Edit</a>
+                <a class="btn btn-primary" th:href="@{/profile/{profile_id}/delete(profile_id=${profile.id})}">Delete</a>
+                <a class="btn btn-primary" th:href="@{/application/new}">Add Application</a>
+            </td>
+            </thead>
+        </table>
+    </div>
+    <div th:if="${ #lists.isEmpty(profiles)}">
+        No Profiles found!
+    </div>
+    <a href="/profile/new" class="btn btn-primary" role="button">Create new Profile</a>
+</myProfile>
